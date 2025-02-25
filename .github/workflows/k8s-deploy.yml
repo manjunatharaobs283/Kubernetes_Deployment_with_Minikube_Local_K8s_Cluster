@@ -1,0 +1,16 @@
+name: Kubernetes Deployment
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Minikube
+        run: minikube start
+
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f deployment.yaml
+
